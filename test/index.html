@@ -41,12 +41,16 @@
                 message.textContent = "Login bem-sucedido";
                 message.style.color = "green";
                 message.style.opacity = 1;
+
+                setTimeout(() => {
+                window.location.href = "home.html"; 
+            }, 1000);
             } else {
                 message.textContent = "Login ou senha inválidos";
                 message.style.color = "red";
             }
             setTimeout(() => {
-                window.location.href = "home.html";
+
                 message.textContent = "";
             }, 2000);
         });
