@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+
+    <header> 
+        <img src="/img/negrao branco.png" alt="negrao" width="210" height="60">
+    </header>
+
+    <form id="logUsers">
+        <h3>LOGIN</h3>
+        <input type="text" placeholder="Usuário" id="username">
+        <input type="password" placeholder="Senha" id="password">
+        <button type="submit">Entrar</button>
+        <p id="message"></p>
+    </form>
+    
+
+    <script>
+        const users = [
+            { username: "admin", password: "1234" },
+            { username: "user", password: "abcd" }
+        ];
+
+        document.getElementById("logUsers").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            const user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                message.textContent = "Login bem-sucedido";
+                message.style.color = "green";
+                message.style.opacity = 1;
+            } else {
+                message.textContent = "Login ou senha inválidos";
+                message.style.color = "red";
+            }
+            setTimeout(() => {
+                window.location.href = "home.html";
+                message.textContent = "";
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
